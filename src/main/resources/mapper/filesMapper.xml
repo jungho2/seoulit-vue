@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seoulit.util.files.FilesDAO">
+
+	<insert id="insertFileList" parameterType="com.seoulit.util.files.FilesTO">
+		<![CDATA[
+			INSERT INTO FILE_TABLE
+			(
+                IDX,
+                ORIGINALFILENAME,
+                STOREDFILE,
+                FILEURL,
+                FILESIZE
+			)
+			VALUES
+		]]>
+		<foreach collection="list" item="item" separator=",">
+			(
+				FILES_SEQ.NEXTVAL,
+				#{item.originalFileName},
+				#{item.storedFile},
+				#{item.fileUrl},
+				#{item.fileSize}
+        	)
+		</foreach>
+	</insert>
+
+	<select id="selectFiles" resultType="com.seoulit.util.files.FilesTO">
+	
+		SELECT
+			*
+		FROM
+			FILE_TABLE
+	
+	</select>
+
+	
+</mapper>

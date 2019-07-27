@@ -1,0 +1,24 @@
+#server
+server:
+    port: 4000
+    
+#mvc - view 정적 자원경로 셋팅
+#Datasource
+spring:
+    mvc:
+        static-path-pattern: /static/**
+    datasource:
+        username: scott
+        password: tiger
+        url: jdbc:oracle:thin:@//localhost:1521/xe
+        driver-class-name: oracle.jdbc.OracleDriver
+    servlet:
+        multipart:
+            enabled: true
+            max-file-size: 50MB
+            max-request-size: 50MB
+
+#MyBatis
+mybatis:
+    config-location: classpath:config/mybatis-config.xml
+    mapper-locations: classpath:mapper/*.xml
